@@ -1,5 +1,5 @@
 class Email < ApplicationRecord
   
-  validates :body, :subject, :recipient, presence: true
+  validates :body, :subject, :to, presence: true
   
 end
