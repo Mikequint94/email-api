@@ -7,8 +7,13 @@ class Api::EmailsController < ApplicationController
   
   def create
     @email = Email.new(email_params)
-    render json: { status: 200,
+    if @email.save
+      render json: { status: 200,
                       data: @email }
+      UserMailer.send_email(@email).deliver_now
+    else
+      render json: { status: @email.errors.full_messages }
+    end
   end
   
   private
