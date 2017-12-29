@@ -1,7 +1,10 @@
 class CreateEmails < ActiveRecord::Migration[5.1]
   def change
     create_table :emails do |t|
-
+      t.string :recipient, null:false
+      t.string :body, null:false
+      t.string :subject
+    
       t.timestamps
     end
   end

@@ -9,7 +9,7 @@ class Api::EmailsController < ApplicationController
   private
 
   def email_params
-    params.require(:email).permit(:subject, :body, :recipient)
+    params.permit(:subject, :body, :recipient)
   end
 
 end
