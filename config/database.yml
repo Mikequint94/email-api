@@ -1,17 +1,18 @@
-development:
+default: &default
   adapter: postgresql
-  database: Web-Api_development
+  encoding: unicode
   pool: 5
-  timeout: 5000
+
+development:
+  <<: *default
+  database: projectname_development
 
 test:
-  adapter: postgresql
-  database: Web-Api_development
-  pool: 5
-  timeout: 5000
+  <<: *default
+  database: projectname_test
 
 production:
-  adapter: postgresql
-  database: Web-Api_development
-  pool: 5
-  timeout: 5000
+  <<: *default
+  database: projectname_production
+  username:
+  password: 
