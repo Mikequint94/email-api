@@ -1,10 +1,13 @@
 class Api::EmailsController < ApplicationController
-  
+
   def index
-    render json: { Welcome: "welcome to my email API!",
-                  Instructions: "to use, simply send a post request to this URL with a subject, body, and to parameters"}
+    # render json: { Welcome: "welcome to my email API!",
+                  # Instructions: "to use, simply send a post request to this URL with a subject, body, and to parameters"}
+    @emails = Email.all
+      render :index
   end
-  
+
+
   def create
     @email = Email.new(email_params)
     if @email.save
@@ -15,7 +18,7 @@ class Api::EmailsController < ApplicationController
       render json: { status: @email.errors.full_messages }
     end
   end
-  
+
   private
 
   def email_params
